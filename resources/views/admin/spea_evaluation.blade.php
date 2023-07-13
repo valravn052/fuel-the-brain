@@ -32,12 +32,12 @@
                                         @foreach($item as $i)
                                         <audio controls>
                                             @php
-                                                
+
                                                 $fileContents = Storage::get('/public/app/public/audio/student/'.$i->file);
                                                 $contentType = Storage::mimeType('/public/app/public/audio/student/'.$i->file);
                                                 $base64 = base64_encode($fileContents);
                                             @endphp
-                                            
+
                                                 <source src="data:{{ $contentType }};base64,{{ $base64 }}" type="{{ $contentType }}">
                                                 Your browser does not support the audio element.
                                             </audio>

@@ -5,7 +5,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers;
 use App\Http\Controllers\WritingInsertController;
 use App\Http\Controllers\AdminSpeakingInsertController;
+use App\Http\Controllers\SpeakingEvaluationController;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,9 +60,9 @@ Route::any('/admin_marking', function() {
     return view('admin/admin_marking');
 })->name('admin_marking');
 
-Route::any('/admin-home', function() {
-    return view('admin/admin-home');
-})->name('admin-home');
+// Route::any('/admin-home', function() {
+//     return view('admin/admin-home');
+// })->name('admin-home');
 
 Route::any('/ques-ins-panel', function() {
     return view('admin/ques-ins-panel');
@@ -71,7 +73,7 @@ Route::any('/reading', 'ReadingController@index')->name('reading');
 Route::any('/speaking', 'SpeakingController@index')->name('speaking');
 
 Route::any('/writing-eval', 'WritingEvaluationController@wri_eval')->name('writing-eval');
-Route::any('/speaking-eval', 'SpeakingEvaluationController@spea_eval')->name('speaking-eval');
+// Route::any('/speaking-eval', 'SpeakingEvaluationController@spea_eval')->name('speaking-eval');
 
 // Route::any('/listening', 'ListeningController@index')->name('listening');
 
@@ -118,3 +120,15 @@ Route::any('/shufl', 'ReadingController@rendomFormation');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'admin', 'namespace' => 'admin'], function() {
+    Route::get('/admin', 'LoginController@login');
+    Route::post('/postAdminlogin', 'LoginController@postAdminLogin')->name('postAdminlogin');
+    Route::get('/admin/logout', 'LoginController@logout');
+    Route::get('/admin/admin-home', 'AdminhomeController@index');
+    Route::any('/admin/speaking-eval', 'SpeakingEvaluationController@spea_eval')->name('speaking-eval');
+});

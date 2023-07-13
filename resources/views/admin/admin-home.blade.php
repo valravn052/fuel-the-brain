@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-        
+
         <div class="mt-5">
             <div class="row">
                 <div class="col-md-5 mx-auto">
@@ -9,18 +9,18 @@
                             Admin Panel
                         </div>
                         <div class="card-body">
-                        
-                            
-                            
+
+
+
                                 <span><a href="ques-ins-panel"><img src="{{ asset('img/Admin-ins-img.jpg') }}" class="rounded float-start" alt="image"></a></span>
-                                
-                            
-                            
-                            <span class=""><a href="speaking-eval"><img src="{{ asset('img/admin-marking-img.jpg') }}" class="rounded float-end pt-2" alt="image"></a>
+
+
+
+                            <span class=""><a href="spea_evaluation"><img src="{{ asset('img/admin-marking-img.jpg') }}" class="rounded float-end pt-2" alt="image"></a>
                             </span>
 
-                            
-                            
+
+
                             {{-- <img src="{{ asset('img/Admin-ins-img.jpg') }}" class="rounded float-start" alt="image">
                             <img src="{{ asset('img/admin-marking-img.jpg') }}" class="rounded float-end" alt="image"> --}}
                         </div>
