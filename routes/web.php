@@ -130,5 +130,5 @@ Route::group(['middleware' => 'admin', 'namespace' => 'admin'], function() {
     Route::post('/postAdminlogin', 'LoginController@postAdminLogin')->name('postAdminlogin');
     Route::get('/admin/logout', 'LoginController@logout');
     Route::get('/admin/admin-home', 'AdminhomeController@index');
-    Route::any('/admin/speaking-eval', 'SpeakingEvaluationController@spea_eval')->name('speaking-eval');
+    // Route::any('/admin/speaking-eval', 'SpeakingEvaluationController@spea_eval')->name('speaking-eval');
 });
