@@ -16,7 +16,7 @@
 
 
 
-                            <span class=""><a href="spea_evaluation"><img src="{{ asset('img/admin-marking-img.jpg') }}" class="rounded float-end pt-2" alt="image"></a>
+                            <span class=""><a href="{{ route('speaking-eval') }}"><img src="{{ asset('img/admin-marking-img.jpg') }}" class="rounded float-end pt-2" alt="image"></a>
                             </span>
 
 

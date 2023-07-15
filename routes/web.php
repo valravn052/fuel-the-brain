@@ -124,11 +124,13 @@ Route::any('/shufl', 'ReadingController@rendomFormation');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['namespace' => 'Admin'], function() {
 
-Route::group(['middleware' => 'admin', 'namespace' => 'admin'], function() {
     Route::get('/admin', 'LoginController@login');
     Route::post('/postAdminlogin', 'LoginController@postAdminLogin')->name('postAdminlogin');
     Route::get('/admin/logout', 'LoginController@logout');
+});
+Route::group(['middleware' => 'admin-auth', 'namespace' => 'Admin'], function() {
     Route::get('/admin/admin-home', 'AdminhomeController@index');
-    // Route::any('/admin/speaking-eval', 'SpeakingEvaluationController@spea_eval')->name('speaking-eval');
+    Route::any('/admin/speaking-eval', 'SpeakingEvaluationController@spea_eval')->name('speaking-eval');
 });
