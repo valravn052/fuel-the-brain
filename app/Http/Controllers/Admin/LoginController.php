@@ -7,6 +7,9 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MyEmail;
 
 class LoginController extends Controller
 {
@@ -46,12 +49,20 @@ class LoginController extends Controller
     }
 
     public function postAdminLogin (Request $request) {
+
+
+        // echo "hhisss";
+        // exit;
+
+
         $credential = ['email' => $request->email, 'password' => $request->password];
 
         //validator
 
         if (Auth()->guard('admin')->attempt($credential)) {
-            return redirect('/admin/admin-home');
+            $name = "Valravn";
+            Mail::to('misajeed58@gmail.com')->send(new MyEmail($name));
+            return view('/admin/admin-home');
         }
         else {
             return redirect('/admin')

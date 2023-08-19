@@ -1,13 +1,15 @@
 <?php
 
+use App\Mail\MyEmail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Http\Controllers;
-use App\Http\Controllers\WritingInsertController;
-use App\Http\Controllers\AdminSpeakingInsertController;
-use App\Http\Controllers\SpeakingEvaluationController;
+// use App\Http\Controllers;
+// use App\Http\Controllers\WritingInsertController;
+// use App\Http\Controllers\AdminSpeakingInsertController;
+// use App\Http\Controllers\SpeakingEvaluationController;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,13 +114,22 @@ Route::get('/ranking', 'RankingController@index');
 Route::get('/writing_ques_ins', [WritingInsertController::class, 'index'])->name('writingInsert.index');
 Route::post('/writing_ques_ins/store', [WritingInsertController::class, 'store'])->name('writingInsert.store');
 
+// Route::controller(ViewController::class)->group(function () {
+//     Route::get('/home', 'home');
+//     Route::get('/blog', 'blog');
+// });
+
 Route::get('/speaking_insert', [AdminSpeakingInsertController::class, 'index'])->name('speaking_insert.index');
 Route::post('/speaking_insert/store', [AdminSpeakingInsertController::class, 'store'])->name('speaking_insert.store');
 
 Route::any('/shufl', 'ReadingController@rendomFormation');
 
 
+// Route::get('/testroute', function() {
+//     $name = "Valravn";
 
+//     Mail::to('misajeed58@gmail.com')->send(new MyEmail($name));
+// });
 
 
 Auth::routes();
@@ -126,11 +137,18 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['namespace' => 'Admin'], function() {
 
+//     Route::post('/postAdminlogin', function() {
+//         echo "hi";
+//         exit;
+//         return view('student');
+//     })->name('student');
+// // echo "hi";
+// exit;
     Route::get('/admin', 'LoginController@login');
     Route::post('/postAdminlogin', 'LoginController@postAdminLogin')->name('postAdminlogin');
     Route::get('/admin/logout', 'LoginController@logout');
 });
 Route::group(['middleware' => 'admin-auth', 'namespace' => 'Admin'], function() {
-    Route::get('/admin/admin-home', 'AdminhomeController@index');
+    // Route::get('/admin/admin-home', 'AdminhomeController@index');
     Route::any('/admin/speaking-eval', 'SpeakingEvaluationController@spea_eval')->name('speaking-eval');
 });

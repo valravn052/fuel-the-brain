@@ -24,7 +24,7 @@ class ListeningController extends Controller
 
     public function fetchAudio(Request $request) {
         $item = DB::select('select file from audio order by rand() limit 1');
-        
+
 
         // $ques = DB::select('select listening_question.ques from listening_question inner join audio on listening_question.aud_id = audio.id limit 1');
 
@@ -39,7 +39,7 @@ class ListeningController extends Controller
     //     $answ->save();
     // }
 
-    
+
 }
 
 

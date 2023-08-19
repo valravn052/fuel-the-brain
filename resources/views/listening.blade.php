@@ -16,12 +16,12 @@
             @foreach($item as $i)
             <audio controls style="width:550px">
                 @php
-                    
+
                     $fileContents = Storage::get('/public/app/public/audio/admin/'.$i->file);
                     $contentType = Storage::mimeType('/public/app/public/audio/admin/'.$i->file);
                     $base64 = base64_encode($fileContents);
                 @endphp
-                
+
                     <source src="data:{{ $contentType }};base64,{{ $base64 }}" type="{{ $contentType }}">
                     Your browser does not support the audio element.
                 </audio>
@@ -43,16 +43,16 @@
     </table>
             </p>
         </div>
-    
+
 
         {{-- <label for="textarea">Start writing from here:</label>
         <!-- Textarea 8 rows height -->
         <div class="form-outline m-2 border border-dark">
             <textarea class="form-control" id="textarea" rows="8"></textarea>
-            
+
         </div> --}}
 
-        
+
 
         <div class=" m-2 pt-2 pl-3 text-right">
             <!-- {{-- <button type="button" class="btn btn-success btn-lg">Submit and next page</button> --}}

@@ -34,7 +34,7 @@
                 </div>
             </a>
             </div>
-            
+
             <ul class="nav justify-content-right pr-3">
                 <li class="nav-item"><a class="my-link-style nav-link text-white" href="#">Wasik</a></li>
                 <li class="nav-item"><a class="my-link-style nav-link text-white" href="#">Logout</a></li>
@@ -44,13 +44,13 @@
     <main>
         @yield('content')
     </main>
-    
-    
+
+
 
     <footer class=" d-flex justify-content-center">
         <p class="text-white font-weight-bold">A self improvement tracker</p>
     </footer>
-    
+
 
 </div>
 
